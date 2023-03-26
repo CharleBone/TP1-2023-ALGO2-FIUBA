@@ -5,11 +5,15 @@
 #include "Ficha.h"
 
 class Casillero {
+private:
+    Ficha * ficha;
 public:
     Casillero();
     Casillero(char ficha);
+    Ficha *getFicha();
+    void setFicha(Ficha *ficha);
 
-    Ficha * ficha;
+
 };
 
 

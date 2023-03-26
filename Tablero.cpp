@@ -18,7 +18,7 @@ Casillero **Tablero::obtener() {
 
 bool Tablero::validarPosicion(int fila, int columna) {
     bool estaOcupada = true;
-    if (this->tablero[fila][columna].ficha->getSimbolo() != '-') {
+    if (this->tablero[fila][columna].getFicha()->getSimbolo() != '-') {
         estaOcupada = false;
     }
     return estaOcupada;
@@ -30,16 +30,16 @@ void Tablero::insertarPosicion(int fila, int columna, char ficha) {
 }
 
 void Tablero::eliminarSoldado(int fila, int columna) {
-    this->tablero[fila][columna].ficha->setSimbolo('X');
-    this->tablero[fila][columna].ficha->setEstaBloqueada(true);
-    this->tablero[fila][columna].ficha->setTurnosRestantesDesbloqueo(5);
+    this->tablero[fila][columna].getFicha()->setSimbolo('X');
+    this->tablero[fila][columna].getFicha()->setEstaBloqueada(true);
+    this->tablero[fila][columna].getFicha()->setTurnosRestantesDesbloqueo(5);
 }
 
 int Tablero::obtenerCantidadDeSoldadosPorJugador(char jugador) {
     int cantidadTotal = 0;
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
-            if (this->tablero[i][j].ficha->getSimbolo() == jugador) {
+            if (this->tablero[i][j].getFicha()->getSimbolo() == jugador) {
                 cantidadTotal++;
             }
         }
@@ -91,8 +91,6 @@ void Tablero::moverElemento(int fila, int columna, char movimiento, char simbolo
             this->tablero[fila - 1][columna + 1] =  * casillero;
         }
     }
-
-
 }
 
 void Tablero::vasiarPosicion(int fila, int columna) {

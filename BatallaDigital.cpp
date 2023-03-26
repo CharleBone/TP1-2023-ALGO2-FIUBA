@@ -12,7 +12,7 @@ BatallaDigital::BatallaDigital() {
 void BatallaDigital::mostrarTablero() {
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
-            std::cout<< this->tablero->obtener()[i][j].ficha->getSimbolo() << " " ;
+            std::cout<< this->tablero->obtener()[i][j].getFicha()->getSimbolo() << " " ;
         }
         std::cout << std::endl;
     }

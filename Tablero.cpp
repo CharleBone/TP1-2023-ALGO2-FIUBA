@@ -53,49 +53,81 @@ void Tablero::moverElemento(int fila, int columna, char movimiento, char simbolo
         case 'w':
         case 'W': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila - 1][columna] =  * casillero;
+            if (hayMina(fila - 1 , columna)) {
+                eliminarSoldado(fila - 1, columna);
+            } else {
+                this->tablero[fila - 1][columna] =  * casillero;
+            }
             break;
         }
         case 's':
         case 'S': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila + 1][columna] =  * casillero;
+            if (hayMina(fila + 1 , columna)) {
+                eliminarSoldado(fila + 1, columna);
+            } else {
+                this->tablero[fila + 1][columna] =  * casillero;
+            }
             break;
         }
         case 'a':
         case 'A': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila][columna - 1] =  * casillero;
+            if (hayMina(fila , columna - 1)) {
+                eliminarSoldado(fila, columna - 1);
+            } else {
+                this->tablero[fila][columna - 1] =  * casillero;
+            }
             break;
         }
         case 'd':
         case 'D': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila][columna + 1] =  * casillero;
+            if (hayMina(fila , columna + 1)) {
+                eliminarSoldado(fila, columna + 1);
+            } else {
+                this->tablero[fila][columna + 1] =  * casillero;
+            }
             break;
         }
         case 'q':
         case 'Q': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila - 1][columna - 1] =  * casillero;
+            if (hayMina(fila - 1, columna - 1)) {
+                eliminarSoldado(fila - 1, columna - 1);
+            } else {
+                this->tablero[fila - 1][columna - 1] =  * casillero;
+            }
             break;
         }
         case 'e':
         case 'E': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila - 1][columna + 1] =  * casillero;
+            if (hayMina(fila - 1, columna + 1)) {
+                eliminarSoldado(fila - 1, columna + 1);
+            } else {
+                this->tablero[fila - 1][columna + 1] =  * casillero;
+            }
             break;
         }
         case 'z':
         case 'Z': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila + 1][columna - 1] =  * casillero;
+            if (hayMina(fila + 1, columna - 1)) {
+                eliminarSoldado(fila + 1, columna - 1);
+            } else {
+                this->tablero[fila + 1][columna - 1] =  * casillero;
+            }
             break;
         }
         case 'x':
         case 'X': {
             vasiarPosicion(fila, columna);
-            this->tablero[fila - 1][columna + 1] =  * casillero;
+            if (hayMina(fila + 1, columna + 1)) {
+                eliminarSoldado(fila + 1, columna + 1);
+            } else {
+                this->tablero[fila + 1][columna + 1] =  * casillero;
+            }
             break;
         }
     }
@@ -104,5 +136,13 @@ void Tablero::moverElemento(int fila, int columna, char movimiento, char simbolo
 void Tablero::vasiarPosicion(int fila, int columna) {
     Casillero * casillero =  new Casillero();
     this->tablero[fila][columna] = * casillero;
+}
+
+bool Tablero::hayMina(int fila, int columna) {
+    bool hayMina = false;
+    if (this->tablero[fila][columna].getFicha()->getSimbolo() == '#') {
+        hayMina = true;
+    }
+    return hayMina;
 }
 

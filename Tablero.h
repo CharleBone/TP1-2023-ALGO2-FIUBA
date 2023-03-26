@@ -16,6 +16,7 @@ public:
     int obtenerCantidadDeSoldadosPorJugador(char jugador);
     void moverElemento(int fila, int columna, char movimiento, char simbolo);
     void vasiarPosicion(int fila, int columna);
+    bool hayMina(int fila, int columna);
 };
 
 

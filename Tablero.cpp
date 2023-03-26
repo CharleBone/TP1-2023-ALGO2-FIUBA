@@ -54,41 +54,49 @@ void Tablero::moverElemento(int fila, int columna, char movimiento, char simbolo
         case 'W': {
             vasiarPosicion(fila, columna);
             this->tablero[fila - 1][columna] =  * casillero;
+            break;
         }
         case 's':
         case 'S': {
             vasiarPosicion(fila, columna);
             this->tablero[fila + 1][columna] =  * casillero;
+            break;
         }
         case 'a':
         case 'A': {
             vasiarPosicion(fila, columna);
             this->tablero[fila][columna - 1] =  * casillero;
+            break;
         }
         case 'd':
         case 'D': {
             vasiarPosicion(fila, columna);
             this->tablero[fila][columna + 1] =  * casillero;
+            break;
         }
         case 'q':
         case 'Q': {
             vasiarPosicion(fila, columna);
             this->tablero[fila - 1][columna - 1] =  * casillero;
+            break;
         }
         case 'e':
         case 'E': {
             vasiarPosicion(fila, columna);
             this->tablero[fila - 1][columna + 1] =  * casillero;
+            break;
         }
         case 'z':
         case 'Z': {
             vasiarPosicion(fila, columna);
             this->tablero[fila + 1][columna - 1] =  * casillero;
+            break;
         }
         case 'x':
         case 'X': {
             vasiarPosicion(fila, columna);
             this->tablero[fila - 1][columna + 1] =  * casillero;
+            break;
         }
     }
 }

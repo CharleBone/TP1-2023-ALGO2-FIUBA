@@ -3,11 +3,13 @@
 Ficha::Ficha() {
     this->simbolo = '-';
     this->estaBloqueada = false;
+    this->turnosRestantesDesbloqueo = 0;
 }
 
 Ficha::Ficha(char ficha) {
     this->simbolo = ficha;
     this->estaBloqueada = false;
+    this->turnosRestantesDesbloqueo = 0;
 }
 
 char Ficha::getSimbolo() const {

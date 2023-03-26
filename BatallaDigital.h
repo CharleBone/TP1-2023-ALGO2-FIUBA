@@ -23,6 +23,7 @@ public:
     void mostrarTableroJugadorUno(char jugador);
     void cargarMinas();
     bool hayGanador();
+    void moverSoldado();
 };
 
 #endif

@@ -44,6 +44,8 @@ void BatallaDigital::jugarJuego() {
     while (!hayGanador()){
         this->cargarMinas();
         this->mostrarTablero();
+        this->moverSoldado();
+        this->mostrarTablero();
     }
     this->mostrarTablero();
 }
@@ -108,6 +110,22 @@ bool BatallaDigital::hayGanador() {
         return true;
     }
     return false;
+}
+
+void BatallaDigital::moverSoldado() {
+    cout << "Ingrese la posicion del soldado a mover" << endl;
+    int fila ;
+    int columna ;
+    char movimiento;
+    cout << "Ingrese Fila" << endl;
+    cin >> fila ;
+
+    cout << "Ingrese Columna" << endl;
+    cin >> columna;
+
+    cout << "Ingrese Movimiento" << endl;
+    cin >> movimiento;
+    this->tablero->moverElemento(fila, columna, movimiento, '1');
 }
 
 

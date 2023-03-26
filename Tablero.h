@@ -14,7 +14,8 @@ public:
     void insertarPosicion(int fila, int columna, char jugador);
     void eliminarSoldado(int fila, int columna);
     int obtenerCantidadDeSoldadosPorJugador(char jugador);
-
+    void moverElemento(int fila, int columna, char movimiento, char simbolo);
+    void vasiarPosicion(int fila, int columna);
 };
 
 

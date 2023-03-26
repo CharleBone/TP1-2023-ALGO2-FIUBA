@@ -1,11 +1,7 @@
-//
-// Created by carlos on 23/3/2023.
-//
-
 #include "Casillero.h"
 
 Casillero::Casillero() {
-
+    this->ficha = new Ficha();
 }
 
 Casillero::Casillero(char ficha) {

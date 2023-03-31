@@ -14,17 +14,17 @@ private:
     Jugador * jugadorDos;
 public:
     /*
-      Este es el constructor de la clase BatallaDigital.
-      Realiza la inicialización de los miembros de la clase.
+     * Este es el constructor de la clase BatallaDigital.
+     * Realiza la inicialización de los miembros de la clase.
     */
     BatallaDigital();
     /*
-      Cargar los recursos necesarios
-      Inicializar los objetos del juego
+     * Inicializar los objetos del juego
+     * Cargar los recursos necesarios
     */
     void inicializarJuego();
     /*
-      Muestra el tablero actual
+     * Muestra el tablero actual
     */
     void mostrarTablero();
     /*

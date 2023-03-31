@@ -146,10 +146,6 @@ bool Tablero::hayMina(int fila, int columna) {
     return hayMina;
 }
 
-bool Tablero::esCasilleroInactivo(int fila, int columna) {
-    return this->tablero[fila][columna].esCasillaInactiva();
-}
-
 bool Tablero::hayJugador(int fila, int columna, char jugador) {
     return this->tablero[fila][columna].hayJugador(jugador);
 }

@@ -89,7 +89,6 @@ void BatallaDigital::crearSoldados() {
 void BatallaDigital::cargarSoldados(char jugador) {
     for (int i = 0; i < 4; i++) {
         cargarJugada( jugador);
-        mostrarTableroPorJugador(jugador);
     }
 }
 
@@ -111,10 +110,6 @@ void BatallaDigital::cargarJugada(char jugador) {
     } else {
         this->tablero->insertarPosicion(fila,columna,jugador);
     }
-}
-
-void BatallaDigital::mostrarTableroPorJugador(char jugador) {
-
 }
 
 void BatallaDigital::cargarMinas(char jugador) {

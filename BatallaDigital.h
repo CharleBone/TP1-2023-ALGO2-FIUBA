@@ -27,10 +27,9 @@ public:
     char hayGanador();
     void moverSoldado(char i);
     void cargarCoordenadas(int *fila, int *columna);
-
     void definirTurnoActual(char *turnoActual) const;
-
     void actualizarCasilleros(char i);
+    void GuardarTableroEnArchivo(char jugador, std::ofstream *archivo);
 };
 
 #endif

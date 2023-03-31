@@ -1,4 +1,5 @@
 #include "iostream"
+#include <fstream>
 #include "BatallaDigital.h"
 
 using namespace std;
@@ -49,18 +50,27 @@ void BatallaDigital::crearJugadores() {
 }
 
 void BatallaDigital::jugarJuego() {
+    ofstream archivoJugadorUno("JUGADOR_1.txt");
+    ofstream archivoJugadorDos("JUGADOR_2.txt");
+
     char turnoActual = FICHA_JUGADOR_UNO;
     while (hayGanador() == 'N'){
         this->cargarMinas(turnoActual);
-        this->mostrarTablero();
         this->moverSoldado(turnoActual);
-        this->mostrarTablero();
         this->actualizarCasilleros(turnoActual);
+        if (turnoActual == FICHA_JUGADOR_UNO) {
+            this->GuardarTableroEnArchivo(turnoActual, &archivoJugadorUno);
+        } else {
+            this->GuardarTableroEnArchivo(turnoActual, &archivoJugadorDos);
+        }
         this->definirTurnoActual(&turnoActual);
     }
     this->mostrarTablero();
     cout << endl;
     cout << "El Ganador es el jugador !!! : " << hayGanador() << endl;
+
+    archivoJugadorUno.close();
+    archivoJugadorDos.close();
 }
 
 void BatallaDigital::definirTurnoActual(char *turnoActual) const {
@@ -176,6 +186,31 @@ void BatallaDigital::actualizarCasilleros(char jugador) {
             }
         }
     }
+}
+
+void BatallaDigital::GuardarTableroEnArchivo(char jugador, ofstream *archivo) {
+    char mina = jugador == FICHA_JUGADOR_UNO ? FICHA_MINA_JUGADOR_UNO : FICHA_MINA_JUGADOR_DOS;
+    for(int i = 0; i < MAX_FILA; i++){
+        for(int j = 0; j < MAX_COLUMNA; j++){
+            if (this->tablero->obtener()[i][j].getFicha()->getSimbolo() == jugador ||
+                    this->tablero->obtener()[i][j].getFicha()->getSimbolo() == FICHA_VACIA ||
+                    this->tablero->obtener()[i][j].getFicha()->getSimbolo() == FICHA_INACTIVA ||
+                    this->tablero->obtener()[i][j].getFicha()->getSimbolo() == mina) {
+                *archivo << this->tablero->obtener()[i][j].getFicha()->getSimbolo() << " ";
+            }
+        }
+        *archivo << endl;
+    }
+
+    for (int i = 0; i < MAX_FILA; i++) {
+        for (int j = 0; j < MAX_COLUMNA; j++) {
+            if (this->tablero->obtener()[i][j].getFicha()->getSimbolo() == FICHA_INACTIVA) {
+                *archivo << "Casilleros Inactivos: " << "Fila: " << i << " Columna: " << j << " Turnos Faltantes Para Desbloquear: "
+                     << this->tablero->obtener()[i][j].getFicha()->getTurnosRestantesDesbloqueo() << endl;
+            }
+        }
+    }
+
 }
 
 

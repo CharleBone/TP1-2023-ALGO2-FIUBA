@@ -15,3 +15,11 @@ Ficha *Casillero::getFicha() {
 void Casillero::setFicha(Ficha *ficha) {
     Casillero::ficha = ficha;
 }
+
+bool Casillero::esCasillaInactiva() {
+    return this->ficha->isEstaBloqueada();
+}
+
+bool Casillero::hayJugador(char jugador) {
+    return this->ficha->getSimbolo() == jugador;
+}

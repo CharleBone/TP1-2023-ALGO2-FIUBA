@@ -9,18 +9,13 @@ class Ficha {
 public:
     Ficha();
     Ficha(char simbolo);
-
     char getSimbolo() const;
-
     void setSimbolo(char simbolo);
-
     bool isEstaBloqueada() const;
-
     void setEstaBloqueada(bool estaBloqueada);
     void setTurnosRestantesDesbloqueo(int cantidadTurnos);
     int getTurnosRestantesDesbloqueo();
     void decrementarTurnosRestantesDesbloqueo();
-
 };
 
 

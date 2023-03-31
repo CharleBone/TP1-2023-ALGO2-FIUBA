@@ -12,6 +12,8 @@ public:
     Casillero(char ficha);
     Ficha *getFicha();
     void setFicha(Ficha *ficha);
+    bool esCasillaInactiva();
+    bool hayJugador(char jugador);
 
 
 };

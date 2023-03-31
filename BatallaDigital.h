@@ -3,13 +3,15 @@
 #include "Tablero.h"
 #include "Jugador.h"
 
+static const char FICHA_JUGADOR_UNO = '1';
+static const char FICHA_JUGADOR_DOS = '2';
+
 class BatallaDigital {
 
 private:
     Tablero * tablero;
     Jugador * jugadorUno;
     Jugador * jugadorDos;
-
 public:
     BatallaDigital();
     void inicializarJuego();
@@ -20,10 +22,13 @@ public:
     void crearSoldados();
     void cargarSoldados(char jugador);
     void cargarJugada(char jugador);
-    void mostrarTableroJugadorUno(char jugador);
-    void cargarMinas();
-    bool hayGanador();
-    void moverSoldado();
+    void mostrarTableroPorJugador(char jugador);
+    void cargarMinas(char i);
+    char hayGanador();
+    void moverSoldado(char i);
+    void cargarCoordenadas(int *fila, int *columna);
+
+    void definirTurnoActual(char *turnoActual) const;
 };
 
 #endif

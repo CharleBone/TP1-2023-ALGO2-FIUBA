@@ -10,11 +10,19 @@ BatallaDigital::BatallaDigital() {
 }
 
 void BatallaDigital::mostrarTablero() {
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
+    for (int i = 0; i < MAX_FILA; i++) {
+        for (int j = 0; j < MAX_COLUMNA; j++) {
             cout<< this->tablero->obtener()[i][j].getFicha()->getSimbolo() << " " ;
         }
         cout << endl;
+    }
+    for (int i = 0; i < MAX_FILA; i++) {
+        for (int j = 0; j < MAX_COLUMNA; j++) {
+            if (this->tablero->obtener()[i][j].getFicha()->getSimbolo() == FICHA_INACTIVA) {
+                cout << "Casilleros Inactivos: " << "Fila: " << i << " Columna: " << j << " Turnos Faltantes Para Desbloquear: "
+                << this->tablero->obtener()[i][j].getFicha()->getTurnosRestantesDesbloqueo() << endl;
+            }
+        }
     }
 }
 
@@ -47,6 +55,7 @@ void BatallaDigital::jugarJuego() {
         this->mostrarTablero();
         this->moverSoldado(turnoActual);
         this->mostrarTablero();
+        this->actualizarCasilleros(turnoActual);
         this->definirTurnoActual(&turnoActual);
     }
     this->mostrarTablero();
@@ -133,7 +142,11 @@ void BatallaDigital::moverSoldado(char jugador) {
     this->cargarCoordenadas(&fila, &columna);
     cout << "Ingrese Movimiento" << endl;
     cin >> movimiento;
-    this->tablero->moverElemento(fila, columna, movimiento, FICHA_JUGADOR_UNO);
+    if (this->tablero->validarSoldadoElegido(fila, columna, jugador)) {
+        this->tablero->moverElemento(fila, columna, movimiento, jugador == FICHA_JUGADOR_UNO ? FICHA_JUGADOR_UNO : FICHA_JUGADOR_DOS);
+    } else {
+        cout << "Perdiste Un turno por haber elegido mal, sorry :( " << endl;
+    }
 }
 
 void BatallaDigital::cargarCoordenadas(int *fila, int *columna) {
@@ -142,6 +155,27 @@ void BatallaDigital::cargarCoordenadas(int *fila, int *columna) {
 
     cout << "Ingrese Columna" << endl;
     cin >> *columna;
+}
+
+void BatallaDigital::actualizarCasilleros(char jugador) {
+    for (int i = 0; i < MAX_FILA; i++) {
+        for (int j = 0; j < MAX_COLUMNA; j++) {
+            if (this->tablero->obtener()[i][j].getFicha()->getSimbolo() == FICHA_INACTIVA) {
+                this->tablero->obtener()[i][j].getFicha()->decrementarTurnosRestantesDesbloqueo();
+            }
+        }
+    }
+
+    for (int i = 0; i < MAX_FILA; i++) {
+        for (int j = 0; j < MAX_COLUMNA; j++) {
+            if (this->tablero->obtener()[i][j].getFicha()->getTurnosRestantesDesbloqueo() == 0 &&
+                    this->tablero->obtener()[i][j].getFicha()->getSimbolo() == FICHA_INACTIVA) {
+                this->tablero->obtener()[i][j].getFicha()->setSimbolo(FICHA_VACIA);
+                this->tablero->obtener()[i][j].getFicha()->setEstaBloqueada(false);
+                this->tablero->obtener()[i][j].getFicha()->setTurnosRestantesDesbloqueo(0);
+            }
+        }
+    }
 }
 
 

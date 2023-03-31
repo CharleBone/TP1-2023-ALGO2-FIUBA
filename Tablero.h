@@ -9,6 +9,8 @@ static const int MAX_COLUMNA = 20;
 static const char FICHA_INACTIVA = 'X';
 static const char FICHA_MINA_JUGADOR_UNO = '#';
 static const char FICHA_MINA_JUGADOR_DOS = '%';
+static const char FICHA_VACIA = '-';
+
 class Tablero {
 private:
     Casillero **tablero;
@@ -25,6 +27,7 @@ public:
     bool hayMina(int fila, int columna);
     bool esCasilleroInactivo(int fila, int columna);
     bool hayJugador(int fila, int columna, char jugador);
+    bool validarSoldadoElegido(int fila, int columna, char jugador);
 };
 
 

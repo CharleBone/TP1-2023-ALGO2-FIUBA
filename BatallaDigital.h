@@ -29,6 +29,8 @@ public:
     void cargarCoordenadas(int *fila, int *columna);
 
     void definirTurnoActual(char *turnoActual) const;
+
+    void actualizarCasilleros(char i);
 };
 
 #endif

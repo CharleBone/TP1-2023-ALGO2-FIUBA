@@ -5,7 +5,7 @@ Tablero::Tablero() {
     for (int i = 0; i < MAX_FILA; i++) {
         tablero[i] = new Casillero[MAX_COLUMNA];
         for (int j = 0; j < MAX_COLUMNA; j++) {
-            Casillero * casillero =  new Casillero('-');
+            Casillero * casillero =  new Casillero(FICHA_VACIA);
             this->tablero[i][j] = * casillero;
         }
     }
@@ -18,7 +18,7 @@ Casillero **Tablero::obtener() {
 
 bool Tablero::validarPosicion(int fila, int columna) {
     bool estaOcupada = true;
-    if (this->tablero[fila][columna].getFicha()->getSimbolo() != '-') {
+    if (this->tablero[fila][columna].getFicha()->getSimbolo() != FICHA_VACIA) {
         estaOcupada = false;
     }
     return estaOcupada;
@@ -156,5 +156,9 @@ bool Tablero::hayJugador(int fila, int columna, char jugador) {
 
 bool Tablero::validarRangoTablero(int fila, int columna) {
     return (fila >= 0 && fila < 20) && (columna >= 0 && columna < 20);
+}
+
+bool Tablero::validarSoldadoElegido(int fila, int columna, char jugador) {
+    return this->tablero[fila][columna].getFicha()->getSimbolo() == jugador;
 }
 

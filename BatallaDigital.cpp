@@ -144,7 +144,7 @@ void BatallaDigital::moverSoldado(char jugador) {
     int columna ;
     char movimiento;
     this->cargarCoordenadas(&fila, &columna);
-    cout << "Ingrese Movimiento" << endl;
+    cout << "Ingrese Movimiento (movimientos validos: w,s,a,d,x,z (puede ser en mayuscula))" << endl;
     cin >> movimiento;
     if (this->tablero->validarSoldadoElegido(fila, columna, jugador) && this->tablero->validarMovimiento(movimiento)) {
         this->tablero->moverElemento(fila, columna, movimiento, jugador == FICHA_JUGADOR_UNO ? FICHA_JUGADOR_UNO : FICHA_JUGADOR_DOS);
@@ -154,10 +154,10 @@ void BatallaDigital::moverSoldado(char jugador) {
 }
 
 void BatallaDigital::cargarCoordenadas(int *fila, int *columna) {
-    cout << "Ingrese Fila" << endl;
+    cout << "Ingrese Fila ( numeros validdos de 0 a 19)" << endl;
     cin >> *fila ;
 
-    cout << "Ingrese Columna" << endl;
+    cout << "Ingrese Columna ( numeros validdos de 0 a 19)" << endl;
     cin >> *columna;
 }
 

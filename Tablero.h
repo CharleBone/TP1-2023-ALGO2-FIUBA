@@ -63,6 +63,8 @@ public:
      * Valida si el soldado que ingresaste es un soldado tuyo
     */
     bool validarSoldadoElegido(int fila, int columna, char jugador);
+
+    bool validarMovimiento(char movimiento);
 };
 
 

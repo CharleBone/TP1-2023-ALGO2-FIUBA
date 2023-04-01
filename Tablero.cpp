@@ -158,3 +158,13 @@ bool Tablero::validarSoldadoElegido(int fila, int columna, char jugador) {
     return this->tablero[fila][columna].getFicha()->getSimbolo() == jugador;
 }
 
+bool Tablero::validarMovimiento(char movimiento) {
+    bool esMovimientoValido = false;
+    if (movimiento == 'w' || movimiento == 'W' || movimiento == 'a' || movimiento == 'A' ||
+            movimiento == 's' || movimiento == 'S' || movimiento == 'd' || movimiento == 'D' ||
+            movimiento == 'z' || movimiento == 'Z' || movimiento == 'x' || movimiento == 'X' ){
+        esMovimientoValido = true;
+    }
+    return esMovimientoValido;
+}
+

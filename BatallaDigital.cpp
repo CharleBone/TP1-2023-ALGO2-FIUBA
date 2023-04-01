@@ -147,7 +147,7 @@ void BatallaDigital::moverSoldado(char jugador) {
     this->cargarCoordenadas(&fila, &columna);
     cout << "Ingrese Movimiento" << endl;
     cin >> movimiento;
-    if (this->tablero->validarSoldadoElegido(fila, columna, jugador)) {
+    if (this->tablero->validarSoldadoElegido(fila, columna, jugador) && this->tablero->validarMovimiento(movimiento)) {
         this->tablero->moverElemento(fila, columna, movimiento, jugador == FICHA_JUGADOR_UNO ? FICHA_JUGADOR_UNO : FICHA_JUGADOR_DOS);
     } else {
         cout << "Perdiste Un turno por haber elegido mal, sorry :( " << endl;

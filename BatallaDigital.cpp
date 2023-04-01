@@ -65,7 +65,6 @@ void BatallaDigital::jugarJuego() {
         }
         this->definirTurnoActual(&turnoActual);
     }
-    this->mostrarTablero();
     cout << endl;
     cout << "El Ganador es el jugador !!! : " << hayGanador() << endl;
 
